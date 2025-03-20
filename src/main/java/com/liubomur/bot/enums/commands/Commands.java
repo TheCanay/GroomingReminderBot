@@ -1,11 +1,11 @@
-package com.liubomur.bot.commands;
+package com.liubomur.bot.enums.commands;
 
 public enum Commands {
 
     START("/start"),
     INVALID_COMMAND(""),
-    FREQUENCY("/frequency"),
-    PET_NAME("/name"),
+    ADDNOTIFICATION("/addNotification"),
+    REMOVENOTIFICATION("/removeNotification"),
     FEEDBACK("/feedback");
 
     private String command;

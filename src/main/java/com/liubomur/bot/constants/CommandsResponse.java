@@ -1,7 +1,6 @@
 package com.liubomur.bot.constants;
 
-import static com.liubomur.bot.commands.Commands.*;
-import static java.lang.StringTemplate.STR;
+import static com.liubomur.bot.enums.commands.Commands.*;
 
 public final class CommandsResponse {
 
@@ -11,16 +10,30 @@ public final class CommandsResponse {
     public static final String START_COMMAND_RESPONSE = STR."""
             Привіт! Це бот для нагадування про те,
             що ваш улюбленець уже потребує грумінгу 😊
-            Для того щоб налаштувати частоту нагадувань використовуйте команду:
-            \{FREQUENCY.getCommand()}
-            Для встановлення імені улюбленця використовуйте команду:
-            \{PET_NAME.getCommand()}
+            Для того щоб почати роботу з ботом, та створити своє перше регулярне нагадування,
+            просто введи команду:
+            \{ADDNOTIFICATION.getCommand()}
+            та дотримуйся інструкцій!
+            Для видалення нагадування використовуй команду:
+            \{REMOVENOTIFICATION.getCommand()}
             Поки це увесь функціонал, та ми будемо раді почути ваші побажання!
             Для того щоб залишити відгук чи побажання, використайте команду:
             \{FEEDBACK.getCommand()}""";
 
-    public static final String FREQUENCY_COMMAND_RESPONSE = STR."""
-            dummy""";
+    public static final String ADDNOTIFICATION_COMMAND_RESPONSE_PET_NAME = STR."""
+            Гайда створімо нове нагадування! Спершу, введіть ім'я вашого улюбленця!""";
+
+    public static final String ADDNOTIFICATION_COMMAND_RESPONSE_FREQUENCY = STR."""
+            Тепер нам потрібно знати як часто потрібно робити нагадування. Який проміжок у днях вам підходить?""";
+
+    public static final String ADDNOTIFICATION_COMMAND_RESPONSE_FINISHED = STR."""
+            Нагадування створено!""";
+
+    public static final String ADDNOTIFICATION_COMMAND_RESPONSE_FAILED_TO_CREATE = STR."""
+            Нагадування створено!""";
+
+    public static final String ADDNOTIFICATION_COMMAND_RESPONSE_INCORRECT_USER_INPUT = STR."""
+            Ой! Схоже ви надсилаєте нам щось не те, спробуйте знову!""";
 
     public static final String INVALID_COMMAND_RESPONSE = STR."""
             Вибач, та схоже я не знаю такої команди, використай /help щоб отримати список моїх команд""";
