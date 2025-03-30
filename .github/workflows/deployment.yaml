@@ -52,8 +52,18 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            if [ -f ~/GroomingReminderBot/app.pid ]; then
-              kill $(cat ~/GroomingReminderBot/app.pid) || true
-              rm ~/GroomingReminderBot/app.pid
+            # Stop the application using shutdown.sh
+            if [ -f ~/GroomingReminderBot/shutdown.sh ]; then
+              echo "Stopping the application..."
+              ~/GroomingReminderBot/shutdown.sh
+            else
+              echo "shutdown.sh not found, skipping shutdown."
             fi
-            nohup java -jar ~/GroomingReminderBot/*.jar > ~/GroomingReminderBot/app.log 2>&1 & echo $! > ~/GroomingReminderBot/app.pid
+            
+            # Start the application using start.sh
+            if [ -f ~/GroomingReminderBot/start.sh ]; then
+              echo "Starting the application..."
+              ~/GroomingReminderBot/start.sh
+            else
+              echo "start.sh not found, skipping startup."
+            fi
