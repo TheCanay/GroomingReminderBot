@@ -22,9 +22,9 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: spring-boot-app
+          name: GroomingReminderBot
           path: target/*.jar
 
   deploy:
@@ -34,7 +34,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: spring-boot-app
+          name: GroomingReminderBot
 
       - name: Deploy to Remote Server
         uses: appleboy/scp-action@v0.1.4
@@ -43,7 +43,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "*.jar"
-          target: "~/app/"
+          target: "~/GroomingReminderBot/"
 
       - name: Restart Application
         uses: appleboy/ssh-action@v0.1.10
@@ -52,8 +52,8 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            if [ -f ~/app/app.pid ]; then
-              kill $(cat ~/app/app.pid) || true
-              rm ~/app/app.pid
+            if [ -f ~/GroomingReminderBot/app.pid ]; then
+              kill $(cat ~/GroomingReminderBot/app.pid) || true
+              rm ~/GroomingReminderBot/app.pid
             fi
-            nohup java -jar ~/app/*.jar > ~/app/app.log 2>&1 & echo $! > ~/app/app.pid
+            nohup java -jar ~/GroomingReminderBot/*.jar > ~/GroomingReminderBot/app.log 2>&1 & echo $! > ~/GroomingReminderBot/app.pid
