@@ -40,3 +40,6 @@ build/
 
 ### local TODO file ###
 todo.txt
+
+### SQLite ###
+*.db
