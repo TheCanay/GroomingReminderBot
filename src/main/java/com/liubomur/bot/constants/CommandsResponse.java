@@ -1,24 +1,28 @@
 package com.liubomur.bot.constants;
 
-import static com.liubomur.bot.enums.commands.Commands.*;
+import static com.liubomur.bot.constants.Commands.*;
 
 public final class CommandsResponse {
 
     private CommandsResponse() {
     }
 
-    public static final String START_COMMAND_RESPONSE = STR."""
+    public static final String START_COMMAND_INIT_RESPONSE = STR."""
             Привіт! Це бот для нагадування про те,
             що ваш улюбленець уже потребує грумінгу 😊
             Для того щоб почати роботу з ботом, та створити своє перше регулярне нагадування,
             просто введи команду:
-            \{ADDNOTIFICATION.getCommand()}
+            \{ADDNOTIFICATION}
             та дотримуйся інструкцій!
             Для видалення нагадування використовуй команду:
-            \{REMOVENOTIFICATION.getCommand()}
+            \{REMOVENOTIFICATION}
             Поки це увесь функціонал, та ми будемо раді почути ваші побажання!
             Для того щоб залишити відгук чи побажання, використайте команду:
-            \{FEEDBACK.getCommand()}""";
+            \{FEEDBACK}""";
+
+    public static final String START_COMMAND_DEFAULT_RESPONSE = STR."""
+            Для того щоб побачити список команд напиши:
+            \{HELP}""";
 
     public static final String ADDNOTIFICATION_COMMAND_RESPONSE_PET_NAME = STR."""
             Гайда створімо нове нагадування! Спершу, введіть ім'я вашого улюбленця!""";
