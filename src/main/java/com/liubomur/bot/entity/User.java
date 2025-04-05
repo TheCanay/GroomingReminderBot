@@ -1,8 +1,6 @@
 package com.liubomur.bot.entity;
 
-import com.liubomur.bot.enums.states.UserState;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -19,7 +16,13 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private UserState state;
+    private String currentCommand;
 
+    @Column
+    private String commandState;
+
+    public User(Long id, String currentCommand) {
+        this.id = id;
+        this.currentCommand = currentCommand;
+    }
 }

@@ -1,8 +1,11 @@
-package com.liubomur.bot.service;
+package com.liubomur.bot.service.user;
 
 import com.liubomur.bot.entity.User;
 import com.liubomur.bot.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.telegram.telegrambots.meta.api.objects.message.Message;
+
+import static com.liubomur.bot.constants.Commands.START;
 
 @Service
 public class UserService {
@@ -11,6 +14,15 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public User getOrSaveTelegramUser(Message message) {
+        long userId = message.getFrom().getId();
+        if (userExists(userId)) {
+            return getUserById(userId);
+        } else {
+            return save(new User(userId, START));
+        }
     }
 
     public User save(User user) {
