@@ -12,6 +12,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/dataSources/
 
 ### Eclipse ###
 .apt_generated
